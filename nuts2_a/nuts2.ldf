@@ -13,12 +13,6 @@
         <Source name="remote_files/sources/top/toplevel.v" type="Verilog" type_short="Verilog">
             <Options top_module="toplevel"/>
         </Source>
-        <Source name="remote_files/sources/srclib/input_buffer/inpfifo16.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="remote_files/sources/srclib/crarity_gen/fifo16/fifo16.sbx" type="sbx" type_short="SBX">
-            <Options/>
-        </Source>
         <Source name="remote_files/sources/srclib/utils/test_gen.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -26,9 +20,6 @@
             <Options/>
         </Source>
         <Source name="PLL/PLL.sbx" type="sbx" type_short="SBX">
-            <Options/>
-        </Source>
-        <Source name="impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
             <Options/>
         </Source>
         <Source name="nuts2.lpf" type="Logic Preference" type_short="LPF">
