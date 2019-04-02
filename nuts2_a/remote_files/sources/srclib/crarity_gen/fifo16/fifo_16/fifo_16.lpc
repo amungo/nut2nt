@@ -1,0 +1,50 @@
+[Device]
+Family=ecp5u
+PartType=LFE5U-25F
+PartName=LFE5U-25F-6BG381C
+SpeedGrade=6
+Package=CABGA381
+OperatingCondition=COM
+Status=S
+
+[IP]
+VendorName=Lattice Semiconductor Corporation
+CoreType=LPM
+CoreStatus=Demo
+CoreName=FIFO
+CoreRevision=5.1
+ModuleName=fifo_16
+SourceFormat=verilog
+ParameterFileVersion=1.0
+Date=03/04/2018
+Time=14:38:24
+
+[Parameters]
+Verilog=1
+VHDL=0
+EDIF=1
+Destination=Synplicity
+Expression=BusA(0 to 7)
+Order=Big Endian [MSB:LSB]
+IO=0
+FIFOImp=EBR Based
+Depth=512
+Width=16
+regout=1
+CtrlByRdEn=1
+EmpFlg=1
+PeMode=Static - Dual Threshold
+PeAssert=10
+PeDeassert=12
+FullFlg=1
+PfMode=Static - Dual Threshold
+PfAssert=508
+PfDeassert=506
+Reset=Async
+Reset1=Sync
+RDataCount=0
+EnECC=0
+EnFWFT=0
+
+[Command]
+cmd_line= -w -n fifo_16 -lang verilog -synth lse -bus_exp 7 -bb -arch sa5p00 -type ebfifo -sync_mode -depth 512 -width 16 -regout -pe 10 -pe2 12 -pf 508 -pf2 506 -reset_rel SYNC

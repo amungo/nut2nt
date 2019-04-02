@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BaliProject version="3.2" title="nuts2" device="LFE5U-25F-6BG381C" default_implementation="impl1">
+    <Options>
+        <Option name="HDL type" value="Verilog"/>
+    </Options>
+    <Implementation title="impl1" dir="impl1" description="impl1" synthesis="lse" default_strategy="Strategy1">
+        <Options>
+            <Option name="HDL type" value="Verilog"/>
+            <Option name="def_top" value="slaveFIFO2b_streamIN_only"/>
+            <Option name="lib" value="work"/>
+            <Option name="top" value="toplevel"/>
+        </Options>
+        <Source name="remote_files/sources/top/toplevel.v" type="Verilog" type_short="Verilog">
+            <Options top_module="toplevel"/>
+        </Source>
+        <Source name="remote_files/sources/srclib/input_buffer/inpfifo16.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="remote_files/sources/srclib/crarity_gen/fifo16/fifo16.sbx" type="sbx" type_short="SBX">
+            <Options/>
+        </Source>
+        <Source name="remote_files/sources/srclib/utils/test_gen.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="remote_files/sources/srclib/slaveFIFO2b/slaveFIFO2b_streamIN_only.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="PLL/PLL.sbx" type="sbx" type_short="SBX">
+            <Options/>
+        </Source>
+        <Source name="impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
+            <Options/>
+        </Source>
+        <Source name="nuts2.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="rvp1.rvl" type="Reveal" type_short="Reveal">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="nuts21.sty"/>
+</BaliProject>
