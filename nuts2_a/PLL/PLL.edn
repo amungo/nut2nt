@@ -4,9 +4,9 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timestamp 2018 3 31 18 15 5)
-      (program "SCUBA" (version "Diamond (64-bit) 3.10.1.112"))))
-      (comment "C:\lscc\diamond\3.10_x64\ispfpga\bin\nt64\scuba.exe -w -n PLL -lang verilog -synth lse -bus_exp 7 -bb -arch sa5p00 -type pll -fin 53.00 -bypass_divp -phase_cntl STATIC -lock -fb_mode 5 -fdc C:/work/mpointer/ntlab/fpga/VV/nuts2/PLL/PLL.fdc ")
+      (timestamp 2019 5 23 16 45 6)
+      (program "SCUBA" (version "Diamond (64-bit) 3.10.2.115"))))
+      (comment "D:\lscc\diamond\3.10_x64\ispfpga\bin\nt64\scuba.exe -w -n PLL -lang verilog -synth lse -bus_exp 7 -bb -arch sa5p00 -type pll -fin 53.00 -fclkop 53 -fclkop_tol 0.0 -fclkos 26.5 -fclkos_tol 0.0 -phases 0 -phase_cntl STATIC -lock -fb_mode 5 -fdc D:/Work/nut2nt-lattice/nuts2_a/PLL/PLL.fdc ")
   (library ORCLIB
     (edifLevel 0)
     (technology
@@ -83,6 +83,8 @@
             (direction INPUT))
           (port CLKOP
             (direction OUTPUT))
+          (port CLKOS
+            (direction OUTPUT))
           (port LOCK
             (direction OUTPUT)))
         (property NGD_DRC_MASK (integer 1))
@@ -115,11 +117,11 @@
             (property CLKOS_FPHASE
               (string "0"))
             (property CLKOS_CPHASE
-              (string "0"))
+              (string "21"))
             (property CLKOP_FPHASE
               (string "0"))
             (property CLKOP_CPHASE
-              (string "0"))
+              (string "10"))
             (property PLL_LOCK_MODE
               (string "0"))
             (property CLKOS_TRIM_DELAY
@@ -138,10 +140,12 @@
               (string "DIVC"))
             (property CLKOS2_ENABLE
               (string "DISABLED"))
+            (property FREQUENCY_PIN_CLKOS
+              (string "26.500000"))
             (property OUTDIVIDER_MUXB
               (string "DIVB"))
             (property CLKOS_ENABLE
-              (string "DISABLED"))
+              (string "ENABLED"))
             (property FREQUENCY_PIN_CLKOP
               (string "53.000000"))
             (property OUTDIVIDER_MUXA
@@ -151,7 +155,7 @@
             (property FREQUENCY_PIN_CLKI
               (string "53.000000"))
             (property ICP_CURRENT
-              (string "8"))
+              (string "11"))
             (property LPF_RESISTOR
               (string "8"))
             (property CLKOS3_DIV
@@ -159,9 +163,9 @@
             (property CLKOS2_DIV
               (string "1"))
             (property CLKOS_DIV
-              (string "1"))
+              (string "22"))
             (property CLKOP_DIV
-              (string "1"))
+              (string "11"))
             (property CLKFB_DIV
               (string "1"))
             (property CLKI_DIV
@@ -197,6 +201,10 @@
             (joined
               (portRef LOCK)
               (portRef LOCK (instanceRef PLLInst_0))))
+          (net CLKOS
+            (joined
+              (portRef CLKOS)
+              (portRef CLKOS (instanceRef PLLInst_0))))
           (net CLKOP
             (joined
               (portRef CLKOP)

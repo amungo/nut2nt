@@ -1,0 +1,19 @@
+----------------------------------------------------------------------
+Report for cell fifo_16bit.TECH
+Register bits:  214 of 24879 (0.860%)
+I/O cells:      0
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               AND2         2          100.0
+                              CCU2C       114          100.0
+                             DP16KD         8          100.0
+                            FD1P3BX        27          100.0
+                            FD1P3DX       123          100.0
+                            FD1S3BX         2          100.0
+                            FD1S3DX        62          100.0
+                                GSR         1          100.0
+                                INV         2          100.0
+                                OR2         1          100.0
+                           ROM16X1A        52          100.0
+                               XOR2        28          100.0
+                              TOTAL       422

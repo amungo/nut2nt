@@ -1,0 +1,3 @@
+Results of NGD DRC are available in fifo_16bit_drc.log.
+WARNING - synthesis: DRC checking was skipped because the -ngo option was used.
+Writing NGD file D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.ngo.

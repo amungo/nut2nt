@@ -1,0 +1,347 @@
+synthesis:  version Diamond (64-bit) 3.10.2.115
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2017 Lattice Semiconductor Corporation,  All rights reserved.
+Thu May 30 17:11:18 2019
+
+
+Command Line:  D:\lscc\diamond\3.10_x64\ispfpga\bin\nt64\synthesis.exe -f fifo_16bit.synproj -sdc D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.ldc -gui 
+
+Synthesis options:
+The -a option is ecp5u.
+The -s option is 6.
+The -t option is CABGA381.
+The -d option is LFE5U-25F.
+Using package CABGA381.
+Using performance grade 6.
+                                                          
+
+##########################################################
+
+### Lattice Family : ECP5U
+
+### Device  : LFE5U-25F
+
+### Package : CABGA381
+
+### Speed   : 6
+
+##########################################################
+
+                                                          
+
+INFO - synthesis: User-Selected Strategy Settings
+Optimization goal = Balanced
+Top-level module name = fifo_16bit.
+Target frequency = 200.000000 MHz.
+Maximum fanout = 1000.
+Timing path count = 3
+BRAM utilization = 100.000000 %
+DSP usage = true (default)
+DSP utilization = 100 % (default)
+fsm_encoding_style = auto
+resolve_mixed_drivers = 0
+fix_gated_clocks = 1
+
+Mux style = Auto
+Use Carry Chain = true
+carry_chain_length = 0
+Use IO Insertion = FALSE
+Use IO Reg = FALSE (implied)
+WARNING - synthesis: Cannot pack registers into I/Os because use_io_insertion is FALSE.
+WARNING - synthesis: Ignoring user setting of use_io_reg. Value is set to FALSE.
+Use IO Reg = FALSE
+Resource Sharing = TRUE
+Propagate Constants = TRUE
+Remove Duplicate Registers = TRUE
+force_gsr = auto
+ROM style = auto
+RAM style = auto
+The -comp option is FALSE.
+The -syn option is FALSE.
+-p D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit (searchpath added)
+Verilog design file = D:/lscc/diamond/3.10_x64/cae_library/synthesis/verilog/ecp5u.v
+Verilog design file = D:/lscc/diamond/3.10_x64/cae_library/synthesis/verilog/pmi_def.v
+Verilog design file = D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.v
+NGO file = D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.ngo
+WARNING - synthesis: Option -force_gsr will be set to false when option -output_edif/-ngo are set
+-sdc option: SDC file input is D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.ldc.
+-lpf option: Output file option is ON.
+Hardtimer checking is enabled (default). The -dt option is not used.
+The -r option is OFF. [ Remove LOC Properties is OFF. ]
+Technology check ok...
+
+Analyzing Verilog file D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v. VERI-1482
+Compile design.
+Compile Design Begin
+Analyzing Verilog file d:/lscc/diamond/3.10_x64/cae_library/synthesis/verilog/ecp5u.v. VERI-1482
+Analyzing Verilog file d:/lscc/diamond/3.10_x64/cae_library/synthesis/verilog/pmi_def.v. VERI-1482
+Analyzing Verilog file d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v. VERI-1482
+Analyzing Verilog file D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v. VERI-1482
+Top module name (Verilog): fifo_16bit
+INFO - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(8): compiling module fifo_16bit. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(25): compiling module AND2. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(367): compiling module INV. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(656): compiling module OR2. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(810): compiling module XOR2. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b0110100110010110). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b010000010000). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b01000000000100). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b0101000000). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b0100000000000001). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b01001111001000). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b010000000000100). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b0100010001010000). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b0100110000110010). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(710): compiling module ROM16X1A(initval=16'b1000000000000001). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(866): compiling module DP16KD(DATA_WIDTH_A=1,DATA_WIDTH_B=1,RESETMODE="ASYNC"). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(110): compiling module FD1P3BX. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(119): compiling module FD1P3DX. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(168): compiling module FD1S3DX. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(160): compiling module FD1S3BX. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(76): compiling module CCU2C(INIT0=16'b0110011010101010,INIT1=16'b0110011010101010,INJECT1_0="NO",INJECT1_1="NO"). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(76): compiling module CCU2C(INIT0=16'b1001100110101010,INIT1=16'b1001100110101010,INJECT1_0="NO",INJECT1_1="NO"). VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(757): compiling module VHI. VERI-1018
+INFO - synthesis: D:/lscc/diamond/3.10_x64/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(761): compiling module VLO. VERI-1018
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(1913): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(1985): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2057): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2137): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2217): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2296): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2376): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2455): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2535): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2614): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2694): input port CIN is not connected on this instance. VDB-1013
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(2773): input port CIN is not connected on this instance. VDB-1013
+Loading NGL library 'D:/lscc/diamond/3.10_x64/ispfpga/sa5p00/data/sa5plib.ngl'...
+Loading NGL library 'D:/lscc/diamond/3.10_x64/ispfpga/xo2c00/data/xo2clib.ngl'...
+Loading NGL library 'D:/lscc/diamond/3.10_x64/ispfpga/mg5g00/data/mg5glib.ngl'...
+Loading NGL library 'D:/lscc/diamond/3.10_x64/ispfpga/or5g00/data/orc5glib.ngl'...
+Loading device for application map from file 'sa5p25.nph' in environment: D:/lscc/diamond/3.10_x64/ispfpga.
+Package Status:                     Final          Version 1.32.
+WARNING - synthesis: There are no design constraints in the file D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.ldc
+Top-level module name = fifo_16bit.
+WARNING - synthesis: There are no design constraints in the file D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.ldc
+This ldc file was generated by Clarity Designer!
+
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(529): Removing unused instance _6. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(531): Removing unused instance _7. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(533): Removing unused instance _8. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(535): Removing unused instance _9. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(537): Removing unused instance _10. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(539): Removing unused instance _11. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(541): Removing unused instance _12. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(543): Removing unused instance _13. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(545): Removing unused instance _14. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(547): Removing unused instance _15. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(549): Removing unused instance _16. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(551): Removing unused instance _17. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(553): Removing unused instance _18. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(555): Removing unused instance _19. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(557): Removing unused instance _20. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(559): Removing unused instance _21. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(561): Removing unused instance _22. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(563): Removing unused instance _23. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(565): Removing unused instance _24. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(567): Removing unused instance _25. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(569): Removing unused instance _26. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(571): Removing unused instance _27. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(573): Removing unused instance _28. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(575): Removing unused instance _29. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(577): Removing unused instance _30. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(579): Removing unused instance _31. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(581): Removing unused instance _32. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(583): Removing unused instance _33. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(585): Removing unused instance _34. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(587): Removing unused instance _35. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(589): Removing unused instance _36. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(591): Removing unused instance _37. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(593): Removing unused instance _38. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(597): Removing unused instance _39. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(601): Removing unused instance _40. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(605): Removing unused instance _41. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(609): Removing unused instance _42. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(613): Removing unused instance _43. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(617): Removing unused instance _44. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(621): Removing unused instance _45. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(625): Removing unused instance _46. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(629): Removing unused instance _47. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(633): Removing unused instance _48. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(637): Removing unused instance _49. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(641): Removing unused instance _50. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(645): Removing unused instance _51. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(649): Removing unused instance _52. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(653): Removing unused instance _53. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(657): Removing unused instance _54. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(661): Removing unused instance _55. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(665): Removing unused instance _56. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(669): Removing unused instance _57. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(673): Removing unused instance _58. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(677): Removing unused instance _59. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(681): Removing unused instance _60. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(685): Removing unused instance _61. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(689): Removing unused instance _62. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(693): Removing unused instance _63. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(697): Removing unused instance _64. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(701): Removing unused instance _65. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(705): Removing unused instance _66. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(709): Removing unused instance _67. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(713): Removing unused instance _68. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(717): Removing unused instance _69. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(721): Removing unused instance _70. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(725): Removing unused instance _71. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(729): Removing unused instance _72. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(733): Removing unused instance _73. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(737): Removing unused instance _74. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(741): Removing unused instance _75. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(745): Removing unused instance _76. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(749): Removing unused instance _77. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(753): Removing unused instance _78. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(757): Removing unused instance _79. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(761): Removing unused instance _80. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(765): Removing unused instance _81. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(769): Removing unused instance _82. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(773): Removing unused instance _83. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(777): Removing unused instance _84. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(781): Removing unused instance _85. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(785): Removing unused instance _86. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(789): Removing unused instance _87. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(793): Removing unused instance _88. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(797): Removing unused instance _89. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(801): Removing unused instance _90. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(838): Removing unused instance _91. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(877): Removing unused instance _92. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(916): Removing unused instance _93. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(955): Removing unused instance _94. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(994): Removing unused instance _95. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(1033): Removing unused instance _96. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(1072): Removing unused instance _97. VDB-5034
+WARNING - synthesis: d:/work/nut2nt-lattice/nuts2_8bit/fifo_buffer/fifo_16bit/fifo_16bit.v(1111): Removing unused instance _98. VDB-5034
+######## Missing driver on net n934. Patching with GND.
+######## Missing driver on net n933. Patching with GND.
+######## Missing driver on net n935. Patching with GND.
+######## Missing driver on net n936. Patching with GND.
+######## Missing driver on net n937. Patching with GND.
+######## Missing driver on net n938. Patching with GND.
+######## Missing driver on net n939. Patching with GND.
+######## Missing driver on net n940. Patching with GND.
+######## Missing driver on net n941. Patching with GND.
+######## Missing driver on net n942. Patching with GND.
+######## Missing driver on net n943. Patching with GND.
+######## Missing driver on net n944. Patching with GND.
+
+
+
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+######## GSR will not be inferred in an NGO flow, unless force_gsr=yes.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+Duplicate register/latch removal. FF_184 is a one-to-one match with FF_169.
+Duplicate register/latch removal. FF_139 is a one-to-one match with FF_124.
+WARNING - synthesis: There are no design constraints in the file fifo_16bit_for_lpf.sdc
+Writing LPF file D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.lpf.
+Results of NGD DRC are available in fifo_16bit_drc.log.
+WARNING - synthesis: DRC checking was skipped because the -ngo option was used.
+Writing NGD file D:/Work/nut2nt-lattice/nuts2_8bit/FIFO_buffer/fifo_16bit/fifo_16bit.ngo.
+
+################### Begin Area Report (fifo_16bit)######################
+Number of register bits => 214 of 24879 (0 % )
+AND2 => 2
+CCU2C => 114
+DP16KD => 8
+FD1P3BX => 27
+FD1P3DX => 123
+FD1S3BX => 2
+FD1S3DX => 62
+GSR => 1
+INV => 2
+OR2 => 1
+ROM16X1A => 52
+XOR2 => 28
+################### End Area Report ##################
+
+################### Begin Clock Report ######################
+Clock Nets
+Number of Clocks: 0
+Clock Enable Nets
+Number of Clock Enables: 2
+Top 2 highest fanout Clock Enables:
+  Net : wren_i, loads : 97
+  Net : rden_i, loads : 97
+Highest fanout non-clock nets
+Top 10 highest fanout non-clock nets:
+  Net : rRst, loads : 107
+  Net : rden_i, loads : 97
+  Net : wren_i, loads : 97
+  Net : w_g2b_xor_cluster_0, loads : 12
+  Net : r_g2b_xor_cluster_0, loads : 12
+  Net : wcount_14, loads : 10
+  Net : rcount_14, loads : 10
+  Net : w_gcount_r214, loads : 9
+  Net : r_gcount_w214, loads : 9
+  Net : w_g2b_xor_cluster_1, loads : 8
+################### End Clock Report ##################
+
+Timing Report Summary
+--------------
+--------------------------------------------------------------------------------
+Constraint                              |   Constraint|       Actual|Levels
+--------------------------------------------------------------------------------
+                                        |             |             |
+create_clock -period 5.000000 -name     |             |             |
+clk501 [get_nets RdClock]               |  200.000 MHz|  121.803 MHz|    13 *
+                                        |             |             |
+create_clock -period 5.000000 -name     |             |             |
+clk500 [get_nets WrClock]               |  200.000 MHz|  121.803 MHz|    13 *
+                                        |             |             |
+--------------------------------------------------------------------------------
+
+
+2 constraints not met.
+
+
+Peak Memory Usage: 74.469  MB
+
+--------------------------------------------------------------
+Elapsed CPU time for LSE flow : 0.609  secs
+--------------------------------------------------------------

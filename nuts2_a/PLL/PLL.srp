@@ -1,5 +1,5 @@
-SCUBA, Version Diamond (64-bit) 3.10.1.112
-Sat Mar 31 18:15:05 2018
+SCUBA, Version Diamond (64-bit) 3.10.2.115
+Thu May 23 16:45:06 2019
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -7,13 +7,13 @@ Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2017 Lattice Semiconductor Corporation,  All rights reserved.
 
-    Issued command   : C:\lscc\diamond\3.10_x64\ispfpga\bin\nt64\scuba.exe -w -n PLL -lang verilog -synth lse -bus_exp 7 -bb -arch sa5p00 -type pll -fin 53.00 -bypass_divp -phase_cntl STATIC -lock -fb_mode 5 -fdc C:/work/mpointer/ntlab/fpga/VV/nuts2/PLL/PLL.fdc 
+    Issued command   : D:\lscc\diamond\3.10_x64\ispfpga\bin\nt64\scuba.exe -w -n PLL -lang verilog -synth lse -bus_exp 7 -bb -arch sa5p00 -type pll -fin 53.00 -fclkop 53 -fclkop_tol 0.0 -fclkos 26.5 -fclkos_tol 0.0 -phases 0 -phase_cntl STATIC -lock -fb_mode 5 -fdc D:/Work/nut2nt-lattice/nuts2_a/PLL/PLL.fdc 
     Circuit name     : PLL
     Module type      : pll
     Module Version   : 5.7
     Ports            : 
 	Inputs       : CLKI
-	Outputs      : CLKOP, LOCK
+	Outputs      : CLKOP, CLKOS, LOCK
     I/O buffer       : not inserted
     EDIF output      : PLL.edn
     Verilog output   : PLL.v

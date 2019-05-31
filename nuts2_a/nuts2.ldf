@@ -6,7 +6,7 @@
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="lse" default_strategy="Strategy1">
         <Options>
             <Option name="HDL type" value="Verilog"/>
-            <Option name="def_top" value="slaveFIFO2b_streamIN_only"/>
+            <Option name="def_top" value="FIFO_buffer"/>
             <Option name="lib" value="work"/>
             <Option name="top" value="toplevel"/>
         </Options>
@@ -20,6 +20,12 @@
             <Options/>
         </Source>
         <Source name="PLL/PLL.sbx" type="sbx" type_short="SBX">
+            <Options/>
+        </Source>
+        <Source name="FIFO_buffer/FIFO_buffer.sbx" type="sbx" type_short="SBX">
+            <Options/>
+        </Source>
+        <Source name="db1.rva" type="Reveal Analyzer Project File" type_short="RVA">
             <Options/>
         </Source>
         <Source name="nuts2.lpf" type="Logic Preference" type_short="LPF">
