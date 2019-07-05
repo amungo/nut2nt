@@ -2,7 +2,7 @@
 `default_nettype none
 module toplevel(
 
-	input wire					CLK_NT_P,   // input clock &clock for input bus
+	input wire					CLK_NT_P,   // input clock &clock for input bus 53Mhz
 	input wire					CLK_NT_N,
 	input wire					INT_CTL,
 
@@ -28,6 +28,7 @@ module toplevel(
 
 	output  wire [1:0]			A,
 	output  wire [15:0]			DQ,			
+	output	wire [7:0]			Test_out,
 	
 	output  wire					SLCSn,		
 	output  wire					SLWRn,		
@@ -39,7 +40,7 @@ module toplevel(
 	
 	input  wire					PKTENDn,
 	output  wire					RCVEN,
-	input  wire					PCLK		
+	input  wire					PCLK			// Cypress work clock 100Mhz	
 	
 );
 
@@ -79,6 +80,33 @@ module toplevel(
 	wire reset;
 	wire wr_ena;
 
+	wire fifo_pre_ready;
+	wire [7:0] fifo_pre_qdata;
+	reg fifo_pre_rd;
+	reg [7:0]data_box;
+	reg [7:0]data_box2;
+	wire [7:0] data_box_w;
+	
+	
+	parameter s_one = 3'b001;
+	parameter s_two = 3'b010;
+	parameter s_three = 3'b011;
+	parameter s_four = 3'b100;
+	
+	reg [2:0] state = 'b000;//s_one;
+	
+	reg [9:0]data_cnt = 10'h000;
+	reg data_cnt_en = 'b0;
+	
+	reg tt_led = 'b0;
+	reg error_full = 'b0;
+	
+	wire [14:0] fifo_counter;
+	wire fifo_s_ready;
+	wire overload;
+	
+	wire ff_full;
+	wire ff_emty;
 //	
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 //
@@ -86,22 +114,20 @@ module toplevel(
 
 
 // --------- PLL --------- // now unused
-/*
+
 	PLL	main_PLL (
 		.CLKI(clk),
 		.CLKOP(clk_pll),
-		.CLKOS(clk_pll_div2),
 		.LOCK(pll_lock)
 	);
-*/
 
-	assign grst	= ~GPIO27;
-	assign tg_on = GPIO26;
+	assign reset = !pll_lock;
+
 	assign  RCVEN = 1;
 
-	reg oe;
-	always @(posedge clk_pll)
-			oe <= pll_lock;
+	//reg oe;
+	//always @(posedge clk_pll)
+	//		oe <= pll_lock;
 
 	assign A[0] = pll_lock;
 	//assign SLWRn = !pll_lock;
@@ -111,9 +137,6 @@ module toplevel(
 	always @(posedge clk)
 		divider2 <= ~divider2;	
 			
-	//assign  SD_FPGA1 = divider2; //1'b1;
-
-	
 
 	reg [27:0] counter_1 = 28'h0000000;
 	reg [7:0] counter_2 = 8'h00;
@@ -124,8 +147,8 @@ module toplevel(
 
 	reg [1:0]stat = 2'b00;
 	
-	assign SD_FPGA1 = fifo_full;					// ----- Led HL3
-	assign SD_FPGA2 = GPIO26;					// ----- Led HL4
+	assign SD_FPGA1 = fifo_full;			// ----- Led HL3
+	assign SD_FPGA2 = fifo_empty;			// ----- Led HL4
 
  
 // ----------------- Delay process start ------------------- O
@@ -135,6 +158,7 @@ module toplevel(
 				// Start warming delay
 				if (counter_1 < 28'hF516E80) begin // 6516E80 - 2 sec / 53Mhz
 					counter_1 = counter_1+1;
+					STRT <= 0;
 				end	else
 					STRT <= 1;
 
@@ -149,51 +173,145 @@ module toplevel(
 
 			// Test counter
 			// uncomment line down and line connection to data_in_reg
-			//counter_2 <= counter_2 + 1;
+			counter_2 <= counter_2 + 1;
 			
 
-			//data_in_reg <= counter_2;
-			data_in_reg <= {IF4_SIGN, IF4_MAGN ,IF3_SIGN, IF3_MAGN, IF2_SIGN, IF2_MAGN, IF1_SIGN, IF1_MAGN};
+			data_in_reg <= counter_2;
+			//data_in_reg <= {IF4_SIGN, IF4_MAGN ,IF3_SIGN, IF3_MAGN, IF2_SIGN, IF2_MAGN, IF1_SIGN, IF1_MAGN};
 		end
 
-// ---------------- Test counter process ------------------ O
 
-	always @(posedge clk)
+// --------------- Fifo input buffer ----------------- O 
+
+	fifo_8bit_buffer	fifo_8bit_buffer_inst  (
+		.RPReset(reset), 
+		.Reset(reset), 
+		.Data (data_in_reg), 
+		.AlmostFull(fifo_pre_ready),
+		.WrClock(clk),
+        .WrEn(STRT),
+		.Q(fifo_pre_qdata),
+		.RdClock(clk_pll),
+        .RdEn(fifo_pre_rd),
+		.Full(ff_full),
+		.Empty(ff_emty)
+        
+	);
+	
+
+// ------------ Data stream counter ------------- O
+
+always @(posedge clk_pll)
+      if (!data_cnt_en)
+            data_cnt <= 'h000;
+      else        
+            data_cnt <= data_cnt + 1'b1;
+
+
+
+// ---------------- Commutator ------------------ O
+
+	always @(posedge clk_pll)
 		begin
-
-			if	(STRT) 										// cypress ready and fpga ready
-				WR_r <= 1; 								// always enable but waiting for dma ready
-			else
-				WR_r <= 0;
-
+		
+		
+		// reset condition
+		if (!STRT) begin
+			data_cnt_en <= 0;
+			fifo_pre_rd <= 0;
+			state <= 'b001;
+			WR_r <= 0;
+			error_full <= 'b0;
+		end
+		else
+		
+			case (state)
+			
+				// start condition
+				'b000	: begin
+					if (!STRT) begin
+						data_cnt_en <= 0;
+						fifo_pre_rd <= 0;
+						WR_r <= 0;
+					end else
+						state <= 'b001;
+					
+				end
+				
+				// waiting for fifo be ready
+				'b001	: begin
+					if (fifo_pre_ready) begin
+						fifo_pre_rd <= 1;
+						data_cnt_en <= 1;
+						// if fifo slave full, we miss pack
+						if (!overload)
+							WR_r <= 1;
+						else
+							error_full <= 'b1;
+						state <= 'b010;
+					end
+					
+				end
+				
+				// read fifo
+				'b010	:begin
+					 
+					data_box <= fifo_pre_qdata;
+					
+					if (data_cnt == 10'h3FC) begin
+						fifo_pre_rd <= 0;
+						WR_r <= 0;
+						state <= 'b100;
+					end
+					
+				end
+				
+				
+				'b100	:begin
+					data_cnt_en <= 0;
+					fifo_pre_rd <= 0;
+					WR_r <= 0;
+					error_full <= 'b0;
+					state <= 'b001;
+				end
+				
+			endcase
+			
+		
 		end
 
 
-	assign data_bus = data_in_reg;
-
+	assign Test_out = data_box;
+//	assign data_bus = data_in_reg;
+//	assign data_box_w = data_box;
 
 // ---------------- Slave fifo module ------------------- O
 
-	assign reset = 0; //!pll_lock;
+	
+
 
 // ------  FIFO buffer  -------- O
-	fifo_16bit	fifo_16bit_inst  (
+	fifo_8bit_sl	fifo_8bit_sl_inst  (
 		.RPReset(reset), 
 		.Reset(reset), 
-		.Data (data_bus), 
-		.AlmostFull(SLWRn),
+		.Data (data_box), 
+		.AlmostFull(overload),
 		.Full(fifo_full),
-		.WrClock(clk), 
+		.WrClock(clk_pll), 
         .WrEn(WR_r), // wr_ena
 		.Q(data_fifo_out),
 		.RdClock(PCLK),
         .RdEn(GPIO26), // rd_ena
-		.AlmostEmpty(alm_empty),
+		.AlmostEmpty(fifo_s_ready),
 		.Empty(fifo_empty)
         
 	);
+	
+	
+	assign SLWRn = ! fifo_s_ready;
 
 	assign DQ = {8'h00, data_fifo_out};
+	//assign DQ = {8'h00, data_box};
 
 
 

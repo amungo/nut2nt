@@ -45,7 +45,7 @@
             <lattice:device>LFE5U-25F-6BG381C</lattice:device>
             <lattice:synthesis>lse</lattice:synthesis>
             <lattice:date>2018-03-31.18:11:20</lattice:date>
-            <lattice:modified>2019-05-23.16:45:06</lattice:modified>
+            <lattice:modified>2019-07-04.17:14:59</lattice:modified>
             <lattice:diamond>3.10.2.115</lattice:diamond>
             <lattice:language>Verilog</lattice:language>
             <lattice:attributes>
@@ -115,7 +115,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>Date</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">05/23/2019</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">07/04/2019</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>ModuleName</lattice:lpckey>
@@ -131,7 +131,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>Time</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">16:45:00</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">17:14:57</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>VendorName</lattice:lpckey>
@@ -140,7 +140,7 @@
                 <lattice:lpcsection lattice:name="Parameters"/>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKFB_DIV</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">1</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">2</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKI_DIV</lattice:lpckey>
@@ -152,7 +152,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOP_ACTUAL_FREQ</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">53.000000</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">106.000000</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOP_APHASE</lattice:lpckey>
@@ -160,7 +160,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOP_DIV</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">11</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">6</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOP_DPHASE</lattice:lpckey>
@@ -168,7 +168,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOP_FREQ</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">53</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">106</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOP_MUXA</lattice:lpckey>
@@ -276,7 +276,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOS_DIV</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">22</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">1</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOS_DPHASE</lattice:lpckey>
@@ -284,7 +284,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOS_Enable</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">ENABLED</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">DISABLED</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>CLKOS_FREQ</lattice:lpckey>
@@ -376,7 +376,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>PLL_BW</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">6.250</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">6.207</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>PLL_LOCK_MODE</lattice:lpckey>
@@ -400,7 +400,7 @@
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>VCO_RATE</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">583.000</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">636.000</lattice:lpcvalue>
                 </lattice:lpcentry>
                 <lattice:lpcentry>
                     <lattice:lpckey>VHDL</lattice:lpckey>
@@ -413,7 +413,7 @@
                 <lattice:lpcsection lattice:name="Command"/>
                 <lattice:lpcentry>
                     <lattice:lpckey>cmd_line</lattice:lpckey>
-                    <lattice:lpcvalue lattice:resolve="constant">-w -n PLL -lang verilog -synth lse -bus_exp 7 -bb -arch sa5p00 -type pll -fin 53.00 -fclkop 53 -fclkop_tol 0.0 -fclkos 26.5 -fclkos_tol 0.0 -phases 0 -phase_cntl STATIC -lock -fb_mode 5</lattice:lpcvalue>
+                    <lattice:lpcvalue lattice:resolve="constant">-w -n PLL -lang verilog -synth lse -bus_exp 7 -bb -arch sa5p00 -type pll -fin 53.00 -fclkop 106 -fclkop_tol 0.0 -phase_cntl STATIC -lock -fb_mode 5</lattice:lpcvalue>
                 </lattice:lpcentry>
             </lattice:lpc>
             <lattice:groups/>

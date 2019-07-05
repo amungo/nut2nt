@@ -16,9 +16,6 @@
         <Source name="remote_files/sources/srclib/utils/test_gen.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="remote_files/sources/srclib/slaveFIFO2b/slaveFIFO2b_streamIN_only.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="PLL/PLL.sbx" type="sbx" type_short="SBX">
             <Options/>
         </Source>

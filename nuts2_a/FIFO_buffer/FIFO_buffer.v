@@ -11,7 +11,8 @@
 module FIFO_buffer () /* synthesis sbp_module=true */ ;
     
     
-    fifo_16bit fifo_16bit_inst ();
+    fifo_8bit_buffer fifo_8bit_buffer_inst ();
+    fifo_8bit_sl fifo_8bit_sl_inst ();
     
 endmodule
 

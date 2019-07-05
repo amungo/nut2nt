@@ -1,0 +1,19 @@
+----------------------------------------------------------------------
+Report for cell fifo_8bit_buffer.TECH
+Register bits:  159 of 24879 (0.639%)
+I/O cells:      0
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               AND2         2          100.0
+                              CCU2C        68          100.0
+                             DP16KD         2          100.0
+                            FD1P3BX         8          100.0
+                            FD1P3DX        96          100.0
+                            FD1S3BX         1          100.0
+                            FD1S3DX        54          100.0
+                                GSR         1          100.0
+                                INV         2          100.0
+                                OR2         1          100.0
+                           ROM16X1A        39          100.0
+                               XOR2        24          100.0
+                              TOTAL       298
