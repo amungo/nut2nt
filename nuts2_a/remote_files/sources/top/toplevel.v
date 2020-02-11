@@ -7,14 +7,16 @@ module toplevel(
 	input wire					INT_CTL,
 
 	// input bus signals
-	input wire					IF1_MAGN,
-	input wire					IF1_SIGN,
-	input wire					IF2_MAGN,
-	input wire					IF2_SIGN,
-	input wire					IF3_MAGN,
-	input wire					IF3_SIGN,
-	input wire					IF4_MAGN,
-	input wire					IF4_SIGN,
+	//input wire					IF1_MAGN,
+	//input wire					IF1_SIGN,
+	//input wire					IF2_MAGN,
+	//input wire					IF2_SIGN,
+	//input wire					IF3_MAGN,
+	//input wire					IF3_SIGN,
+	//input wire					IF4_MAGN,
+	//input wire					IF4_SIGN,
+	
+	input wire					[7:0]IF_DATA,
 	
 	input wire					PPS,
 	
@@ -24,7 +26,7 @@ module toplevel(
 	input  wire					GPIO23,		// 
 	output reg					GPIO25,		// FIFO_RDY
 	input  wire					GPIO26,		// FX3_READY	
-	output  wire				GPIO27,		// START USB SYSTEM
+	input  wire					GPIO27,		// START USB SYSTEM
 
 	output  wire [1:0]			A,
 	output  wire [15:0]			DQ,			
@@ -88,15 +90,23 @@ module toplevel(
 	wire [7:0] data_box_w;
 	
 	
-	parameter s_one = 3'b001;
-	parameter s_two = 3'b010;
-	parameter s_three = 3'b011;
-	parameter s_four = 3'b100;
+	parameter F_ZERO = 3'b000;
+	parameter F_RDY = 3'b001;
+	parameter F_WRT = 3'b010;
+	parameter F_ENDPCKG = 3'b011;
+	parameter F_WRT_N1 = 3'b100;
+	parameter F_WRT_N2 = 3'b101;
+	parameter F_WRT_N3 = 3'b110;
+	parameter F_WRT_LST = 3'b111;
 	
-	reg [2:0] state = 'b000;//s_one;
+	reg [2:0] state = 'b001;
+	
+	reg [31:0] packet_cnt = 32'h00000001;
 	
 	reg [9:0]data_cnt = 10'h000;
 	reg data_cnt_en = 'b0;
+	
+	reg fifo_pre_start = 'b0;
 	
 	reg tt_led = 'b0;
 	reg error_full = 'b0;
@@ -104,6 +114,7 @@ module toplevel(
 	wire [14:0] fifo_counter;
 	wire fifo_s_ready;
 	wire overload;
+	reg	overload_manual;
 	
 	wire ff_full;
 	wire ff_emty;
@@ -113,7 +124,7 @@ module toplevel(
 	ILVDS ilvds_I(.A(CLK_NT_P), .AN(CLK_NT_N), .Z(clk));
 
 
-// --------- PLL --------- // now unused
+// --------- PLL --------- //
 
 	PLL	main_PLL (
 		.CLKI(clk),
@@ -148,7 +159,7 @@ module toplevel(
 	reg [1:0]stat = 2'b00;
 	
 	assign SD_FPGA1 = fifo_full;			// ----- Led HL3
-	assign SD_FPGA2 = fifo_empty;			// ----- Led HL4
+	assign SD_FPGA2 = dden;			// ----- Led HL4
 
  
 // ----------------- Delay process start ------------------- O
@@ -156,7 +167,7 @@ module toplevel(
 		begin
 
 				// Start warming delay
-				if (counter_1 < 28'hF516E80) begin // 6516E80 - 2 sec / 53Mhz
+				if (counter_1 < 28'h4C174E2) begin // 6516E80 - 2 sec / 53Mhz
 					counter_1 = counter_1+1;
 					STRT <= 0;
 				end	else
@@ -164,22 +175,28 @@ module toplevel(
 
 		end
 
-	assign GPIO27 = STRT; // START USB SYSTEM
+	//assign GPIO27 = STRT; // START USB SYSTEM
+	always @(STRT, GPIO27)
+		fifo_pre_start <= STRT & GPIO27; // START FIFO BUFFER (system ready & usb cypress ready)
 
 // ----------------- Muxer data -------------------- O
 
-	always @(posedge clk)
+	always @(negedge clk)
 		begin
 
 			// Test counter
 			// uncomment line down and line connection to data_in_reg
-			counter_2 <= counter_2 + 1;
+			//if (fifo_pre_start)
+			//	counter_2 <= counter_2 + 1;
+			//	counter_2 <= 8'h00;
 			
 
-			data_in_reg <= counter_2;
+			//data_in_reg <= counter_2;
 			//data_in_reg <= {IF4_SIGN, IF4_MAGN ,IF3_SIGN, IF3_MAGN, IF2_SIGN, IF2_MAGN, IF1_SIGN, IF1_MAGN};
+			data_in_reg <= IF_DATA;
 		end
 
+	//assign data_in_reg = {IF4_SIGN, IF4_MAGN ,IF3_SIGN, IF3_MAGN, IF2_SIGN, IF2_MAGN, IF1_SIGN, IF1_MAGN};
 
 // --------------- Fifo input buffer ----------------- O 
 
@@ -189,7 +206,7 @@ module toplevel(
 		.Data (data_in_reg), 
 		.AlmostFull(fifo_pre_ready),
 		.WrClock(clk),
-        .WrEn(STRT),
+        .WrEn(fifo_pre_start),
 		.Q(fifo_pre_qdata),
 		.RdClock(clk_pll),
         .RdEn(fifo_pre_rd),
@@ -203,12 +220,22 @@ module toplevel(
 
 always @(posedge clk_pll)
       if (!data_cnt_en)
-            data_cnt <= 'h000;
+            data_cnt <= 10'h000;
       else        
             data_cnt <= data_cnt + 1'b1;
 
+/*
+  parameter COUNTER_WIDTH = <width>;
 
+   reg [COUNTER_WIDTH-1:0] <reg_name> = {COUNTER_WIDTH{1'b0}};
 
+   always @(posedge <clock>)
+      if (!<reset>)
+         <reg_name> <= {COUNTER_WIDTH{1'b0}};
+      else if (<clock_enable>)
+         <reg_name> <= <reg_name> + 1'b1;
+
+*/
 // ---------------- Commutator ------------------ O
 
 	always @(posedge clk_pll)
@@ -219,60 +246,92 @@ always @(posedge clk_pll)
 		if (!STRT) begin
 			data_cnt_en <= 0;
 			fifo_pre_rd <= 0;
-			state <= 'b001;
+			state <= F_RDY;
 			WR_r <= 0;
 			error_full <= 'b0;
+			data_box <= 8'hA0;
+			packet_cnt = 32'h00000001;
+			overload_manual = 0;
 		end
 		else
 		
 			case (state)
 			
-				// start condition
-				'b000	: begin
-					if (!STRT) begin
-						data_cnt_en <= 0;
-						fifo_pre_rd <= 0;
-						WR_r <= 0;
-					end else
-						state <= 'b001;
-					
-				end
-				
-				// waiting for fifo be ready
-				'b001	: begin
-					if (fifo_pre_ready) begin
-						fifo_pre_rd <= 1;
-						data_cnt_en <= 1;
-						// if fifo slave full, we miss pack
-						if (!overload)
-							WR_r <= 1;
-						else
-							error_full <= 'b1;
-						state <= 'b010;
-					end
-					
-				end
-				
-				// read fifo
-				'b010	:begin
-					 
-					data_box <= fifo_pre_qdata;
-					
-					if (data_cnt == 10'h3FC) begin
-						fifo_pre_rd <= 0;
-						WR_r <= 0;
-						state <= 'b100;
-					end
-					
-				end
-				
-				
-				'b100	:begin
+				// zero condition
+				F_ZERO	: begin
 					data_cnt_en <= 0;
 					fifo_pre_rd <= 0;
 					WR_r <= 0;
 					error_full <= 'b0;
-					state <= 'b001;
+					
+					state <= F_RDY;
+					
+				end
+				
+				// waiting for fifo_pre be ready
+				F_RDY	: begin
+					if (fifo_pre_ready) begin
+						//fifo_pre_rd <= 1;
+						//data_cnt_en <= 1;
+						// if fifo slave full, we miss the package
+						
+						if (!overload)
+							WR_r = 1;
+						else
+							error_full <= 'b1;
+						
+						
+						data_box <= packet_cnt[31:24];//packet_cnt[7:0];
+						state <= F_WRT_N1;
+					end
+					
+				end
+				
+				
+				// Packages counter
+				F_WRT_N1	:begin							
+					data_box <= packet_cnt[23:16];//packet_cnt[15:8];
+					state <= F_WRT_N2;
+				end
+				
+				
+				F_WRT_N2	:begin
+					data_box <= packet_cnt[15:8];//packet_cnt[23:16];
+					state <= F_WRT_N3;
+					fifo_pre_rd <= 1;
+				end
+				
+				F_WRT_N3	:begin
+					data_box <= packet_cnt[7:0];//packet_cnt[31:24];
+					state <= F_WRT;
+					//fifo_pre_rd <= 1;
+					data_cnt_en <= 1;
+				end
+				
+				// read and write fifo
+				F_WRT	:begin
+					data_box <= fifo_pre_qdata;
+					//data_box <= data_cnt[7:0];
+					if (data_cnt == 10'h3FA) begin
+						fifo_pre_rd <= 0;
+
+						state <= F_WRT_LST;
+					end
+				end
+				
+				F_WRT_LST	:begin
+					data_box <= fifo_pre_qdata;
+					state <= F_ENDPCKG;
+				end
+				
+				
+				F_ENDPCKG	:begin
+					data_box <= 8'h77;
+					data_cnt_en <= 0;
+					WR_r <= 0;
+					error_full <= 'b0;
+					packet_cnt <= packet_cnt + 1;
+					state <= F_RDY;
 				end
 				
 			endcase
@@ -281,7 +340,7 @@ always @(posedge clk_pll)
 		end
 
 
-	assign Test_out = data_box;
+//	assign Test_out = data_box;
 //	assign data_bus = data_in_reg;
 //	assign data_box_w = data_box;
 

@@ -25,6 +25,24 @@
         <Source name="db1.rva" type="Reveal Analyzer Project File" type_short="RVA">
             <Options/>
         </Source>
+        <Source name="nut2_silver_sim3/nut2_silver_sim3.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="nut2_sim/nut2_sim.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="nut2nt_silver_sim/nut2nt_silver_sim.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="nut2nt_silver_sim/nut2nt_silver_sim/nut2nt_silver_sim.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="nut_silver_sim1/nut_silver_sim1.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="nut_silver_sim2/nut_silver_sim2.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
         <Source name="nuts2.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
