@@ -367,7 +367,7 @@ always @(posedge clk_pll)
 	);
 	
 	
-	assign SLWRn = ! fifo_s_ready;
+	assign SLWRn = ! fifo_s_ready; // ??????????????????
 
 	assign DQ = {8'h00, data_fifo_out};
 	//assign DQ = {8'h00, data_box};
